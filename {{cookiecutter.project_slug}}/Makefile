@@ -60,6 +60,7 @@ lint: ## check style with flake8
 	black --check $(PY_PATHS)
 
 test: ## run tests quickly with the default Python
+	pyo3-pack develop
 	pytest -v
 
 coverage: ## check code coverage quickly with the default Python
