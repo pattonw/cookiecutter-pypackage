@@ -25,6 +25,7 @@ endef
 export PRINT_HELP_PYSCRIPT
 
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
+PY_PATHS = {{ cookiecutter.project_slug }} tests
 
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
@@ -50,11 +51,15 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
+fmt:
+	black $(PY_PATHS)
+
 lint: ## check style with flake8
-	flake8 {{ cookiecutter.project_slug }} tests
+	flake8 $(PY_PATHS)
+	black --check $(PY_PATHS)
 
 test: ## run tests quickly with the default Python
-	py.test
+	pytest -v
 
 coverage: ## check code coverage quickly with the default Python
 	coverage run --source {{ cookiecutter.project_slug }} -m pytest
@@ -68,6 +73,8 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	sphinx-apidoc -o docs/ {{ cookiecutter.project_slug }}
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
+
+view-docs:
 	$(BROWSER) docs/_build/html/index.html
 
 servedocs: docs ## compile the docs watching for changes
@@ -82,4 +89,16 @@ dist: clean ## builds source and wheel package
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+	pip install .
+
+install-dev: clean
+	pip install -r requirements_dev.txt && pip install -e .
+
+patch: test-all docs
+	bumpversion patch
+
+minor: test-all docs
+	bumpversion minor
+
+major: test-all docs
+	bumpversion major
