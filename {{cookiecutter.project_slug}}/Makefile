@@ -53,6 +53,7 @@ clean-test: ## remove test and coverage artifacts
 
 fmt:
 	black $(PY_PATHS)
+	cargo fmt
 
 lint: ## check style with flake8
 	flake8 $(PY_PATHS)
