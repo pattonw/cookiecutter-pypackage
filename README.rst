@@ -1,5 +1,5 @@
 ======================
-Cookiecutter PyPackage
+Cookiecutter Rust-PyPackage
 ======================
 
 .. image:: https://pyup.io/repos/github/audreyr/cookiecutter-pypackage/shield.svg
@@ -9,22 +9,21 @@ Cookiecutter PyPackage
 .. image:: https://travis-ci.org/audreyr/cookiecutter-pypackage.svg?branch=master
     :target: https://travis-ci.org/audreyr/cookiecutter-pypackage     
 
-Cookiecutter_ template for a Python package.
+Cookiecutter_ template for a mixed layout Pyo3 Rust/Python package.
 
 * GitHub repo: https://github.com/audreyr/cookiecutter-pypackage/
 * Documentation: https://cookiecutter-pypackage.readthedocs.io/
 * Free software: BSD license
 
-Features
+Features (Most are probably broken at the moment)
 --------
 
 * Testing setup with ``unittest`` and ``python setup.py test`` or ``py.test``
 * Travis-CI_: Ready for Travis Continuous Integration testing
-* Tox_ testing: Setup to easily test for Python 2.7, 3.4, 3.5, 3.6
-* Sphinx_ docs: Documentation ready for generation with, for example, ReadTheDocs_
-* Bumpversion_: Pre-configured version bumping with a single command
-* Auto-release to PyPI_ when you push a new tag to master (optional)
-* Command line interface using Click (optional)
+* Tox_ testing: Setup to easily test for Python 2.7, 3.4, 3.5, 3.6 (not working at the moment)
+* Sphinx_ docs: Documentation ready for generation with, for example, ReadTheDocs_ (probably not working)
+* Bumpversion_: Pre-configured version bumping with a single command (probably not working)
+* Auto-release to PyPI_ when you push a new tag to master (optional) (IT WORKS!)
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 
@@ -61,7 +60,7 @@ Then:
 * Add the repo to your Travis-CI_ account.
 * Install the dev requirements into a virtualenv. (``pip install -r requirements_dev.txt``)
 * Register_ your project with PyPI.
-* Run the Travis CLI command `travis encrypt --add deploy.password` to encrypt your PyPI password in Travis config
+* Add a hidden variable PYO3_PACK_PASSWORD to your repository through the settings in travis_ci to encrypt your PyPI password
   and activate automated deployment on PyPI when you push a new tag to master branch.
 * Add the repo to your ReadTheDocs_ account + turn on the ReadTheDocs service hook.
 * Release your package by pushing a new tag to master.

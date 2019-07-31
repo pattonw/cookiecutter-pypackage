@@ -1,31 +1,46 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
-python:
-  - 3.6
-  - 3.5
-  - 3.4
-  - 2.7
 
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
+stages:
+  - test
+  - name: deploy
+    if: tag IS present
+env:
+  global:
+  - TRAVIS_RUST_VERSION=nightly-2019-07-01
+  - RUST_BACKTRACE=1
+  - PYPI_USERNAME=pattonw
 
-# Command to run tests, e.g. python setup.py test
-script: tox
-
-{% if cookiecutter.use_pypi_deployment_with_travis == 'y' -%}
-# Assuming you have installed the travis-ci CLI tool, after you
-# create the Github repo and add it to Travis, run the
-# following command to finish PyPI deployment setup:
-# $ travis encrypt --add deploy.password
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: {{ cookiecutter.pypi_username }}
-  password:
-    secure: PLEASE_REPLACE_ME
-  on:
-    tags: true
-    repo: {{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
-    python: 3.6
+test_template: &test_template
+  stage: test
+  before_install:
+    source ./ci/travis/setup_rust.sh
+  install:
+{%- if cookiecutter.use_pytest == 'y' %}
+    pip install -U pyo3-pack pytest
+{%- else %}
+    pip install -U pyo3-pack
 {%- endif %}
+  script:
+    ./ci/travis/test.sh
+
+deploy_template: &deploy_template
+  stage: deploy
+  before_install:
+    source ./ci/travis/setup_rust.sh
+  install:
+    pip install -U pyo3-pack
+  script:
+    ./ci/travis/deploy.sh
+
+jobs:
+  include:
+    - <<: *test_template
+      python: 3.6
+    - <<: *test_template
+      dist: xenial
+      python: 3.7
+    - <<: *deploy_template
+      python: 3.6
+    - <<: *deploy_template
+      dist: xenial
+      python: 3.7
