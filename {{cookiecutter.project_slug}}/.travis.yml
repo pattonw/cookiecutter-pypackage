@@ -8,14 +8,18 @@ env:
   global:
   - TRAVIS_RUST_VERSION=nightly-2019-07-01
   - RUST_BACKTRACE=1
-  - TWINE_USERNAME=pattonw
+  - PYPI_USERNAME=pattonw
 
 test_template: &test_template
   stage: test
   before_install:
     source ./ci/travis/setup_rust.sh
   install:
+{%- if cookiecutter.use_pytest == 'y' %}
+    pip install -U pyo3-pack pytest
+{%- else %}
     pip install -U pyo3-pack
+{%- endif %}
   script:
     ./ci/travis/test.sh
 
@@ -31,14 +35,10 @@ deploy_template: &deploy_template
 jobs:
   include:
     - <<: *test_template
-      python: 3.5
-    - <<: *test_template
       python: 3.6
     - <<: *test_template
       dist: xenial
       python: 3.7
-    - <<: *deploy_template
-      python: 3.5
     - <<: *deploy_template
       python: 3.6
     - <<: *deploy_template
