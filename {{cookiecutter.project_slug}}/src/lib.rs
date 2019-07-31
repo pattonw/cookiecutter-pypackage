@@ -8,7 +8,7 @@ fn get_42() -> usize {
 
 #[pymodule]
 fn pyo3_mixed(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_wrapped(wrap_pyfunction!(get_21))?;
+    m.add_wrapped(wrap_pyfunction!(get_42))?;
 
     Ok(())
 }
