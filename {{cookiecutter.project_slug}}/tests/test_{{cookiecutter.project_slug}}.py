@@ -9,7 +9,8 @@ import pytest
 import unittest
 {%- endif %}
 
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
+# from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
+import {{ cookiecutter.project_slug }}
 
 {%- if cookiecutter.use_pytest == 'y' %}
 
@@ -26,8 +27,7 @@ def response():
 
 def test_content(response):
     """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+    assert {{ cookiecutter.project_slug }}.get_42() == 42
 {%- else %}
 
 
@@ -42,4 +42,5 @@ class Test{{ cookiecutter.project_slug|title }}(unittest.TestCase):
 
     def test_000_something(self):
         """Test something."""
+        self.assertEqual({{ cookiecutter.project_slug }}.get_42(), 42)
 {%- endif %}

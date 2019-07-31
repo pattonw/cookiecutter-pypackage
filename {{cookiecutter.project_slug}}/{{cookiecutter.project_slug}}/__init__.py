@@ -6,6 +6,6 @@ __author__ = """{{ cookiecutter.full_name }}"""
 __email__ = '{{ cookiecutter.email }}'
 __version__ = '{{ cookiecutter.version }}'
 
-from .{{ cookiecutter.project_name }} import get_42
+from .{{ cookiecutter.project_slug }} import get_42
 
 __all__ = ["get_42"]

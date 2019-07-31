@@ -1,6 +1,4 @@
 language: python
-python:
-  - 3.5
 
 stages:
   - test
@@ -40,3 +38,9 @@ jobs:
       dist: xenial
       python: 3.7
     - <<: *deploy_template
+      python: 3.5
+    - <<: *deploy_template
+      python: 3.6
+    - <<: *deploy_template
+      dist: xenial
+      python: 3.7

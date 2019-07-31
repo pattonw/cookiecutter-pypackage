@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo "DEPLOY!"
+pyo3-pack publish -u PYPI_USERNAME -i $(which python)
