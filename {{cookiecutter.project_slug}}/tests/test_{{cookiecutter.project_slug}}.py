@@ -3,16 +3,10 @@
 
 """Tests for `{{ cookiecutter.project_slug }}` package."""
 
-{% if cookiecutter.use_pytest == 'y' -%}
 import pytest
-{% else %}
-import unittest
-{%- endif %}
 
 # from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
 import {{ cookiecutter.project_slug }}
-
-{%- if cookiecutter.use_pytest == 'y' %}
 
 
 @pytest.fixture
@@ -28,19 +22,3 @@ def response():
 def test_content(response):
     """Sample pytest test function with the pytest fixture as an argument."""
     assert {{ cookiecutter.project_slug }}.get_42() == 42
-{%- else %}
-
-
-class Test{{ cookiecutter.project_slug|title }}(unittest.TestCase):
-    """Tests for `{{ cookiecutter.project_slug }}` package."""
-
-    def setUp(self):
-        """Set up test fixtures, if any."""
-
-    def tearDown(self):
-        """Tear down test fixtures, if any."""
-
-    def test_000_something(self):
-        """Test something."""
-        self.assertEqual({{ cookiecutter.project_slug }}.get_42(), 42)
-{%- endif %}
