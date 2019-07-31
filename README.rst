@@ -1,5 +1,5 @@
 ======================
-Cookiecutter PyPackage
+Cookiecutter Rust-PyPackage
 ======================
 
 .. image:: https://pyup.io/repos/github/audreyr/cookiecutter-pypackage/shield.svg
@@ -9,7 +9,7 @@ Cookiecutter PyPackage
 .. image:: https://travis-ci.org/audreyr/cookiecutter-pypackage.svg?branch=master
     :target: https://travis-ci.org/audreyr/cookiecutter-pypackage     
 
-Cookiecutter_ template for a Python package.
+Cookiecutter_ template for a mixed layout Pyo3 Rust/Python package.
 
 * GitHub repo: https://github.com/audreyr/cookiecutter-pypackage/
 * Documentation: https://cookiecutter-pypackage.readthedocs.io/
