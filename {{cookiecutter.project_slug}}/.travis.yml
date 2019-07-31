@@ -1,8 +1,6 @@
 language: python
 python:
   - 3.5
-  - 3.6
-  - 3.7
 
 stages:
   - test
@@ -14,19 +12,21 @@ env:
   - RUST_BACKTRACE=1
   - TWINE_USERNAME=pattonw
 
-before_install:
-  source ./ci/travis/setup_rust.sh
-
-install:
-  pip install -U pyo3-pack
-
 test_template: &test_template
   stage: test
+  before_install:
+    source ./ci/travis/setup_rust.sh
+  install:
+    pip install -U pyo3-pack
   script:
     ./ci/travis/test.sh
 
 deploy_template: &deploy_template
   stage: deploy
+  before_install:
+    source ./ci/travis/setup_rust.sh
+  install:
+    pip install -U pyo3-pack
   script:
     ./ci/travis/deploy.sh
 
