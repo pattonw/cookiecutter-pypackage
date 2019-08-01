@@ -1,5 +1,10 @@
 BAKE_OPTIONS=--no-input
 
+test:
+	pip install -U pip
+	pip install -r requirements_dev.txt
+	pytest -v
+
 help:
 	@echo "bake 	generate project using defaults"
 	@echo "watch 	generate project using defaults and watch for changes"

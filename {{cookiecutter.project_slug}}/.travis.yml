@@ -15,11 +15,7 @@ test_template: &test_template
   before_install:
     source ./ci/travis/setup_rust.sh
   install:
-{%- if cookiecutter.use_pytest == 'y' %}
     pip install -U pyo3-pack pytest
-{%- else %}
-    pip install -U pyo3-pack
-{%- endif %}
   script:
     ./ci/travis/test.sh
 

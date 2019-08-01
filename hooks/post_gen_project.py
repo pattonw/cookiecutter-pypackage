@@ -14,8 +14,5 @@ if __name__ == '__main__':
         remove_file('AUTHORS.rst')
         remove_file('docs/authors.rst')
 
-    if '{{ cookiecutter.use_pytest }}' == 'y':
-        remove_file('tests/__init__.py')
-
     if 'Not open source' == '{{ cookiecutter.open_source_license }}':
         remove_file('LICENSE')

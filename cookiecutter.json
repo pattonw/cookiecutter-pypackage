@@ -3,13 +3,11 @@
   "email": "pattonw@example.com",
   "github_username": "pattonw",
   "project_name": "Rust Python mixed layout project",
-  "project_slug": "rushon",
+  "project_slug": "rust_python_boilerplate",
   "project_short_description": "A python package using rust for speed and memory safety.",
   "pypi_username": "{{ cookiecutter.github_username }}",
   "version": "0.1.0",
-  "use_pytest": "n",
   "use_pypi_deployment_with_travis": "y",
-  "add_pyup_badge": "n",
   "create_author_file": "y",
-  "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"]
+  "open_source_license": ["MIT License", "BSD License", "ISC License", "Apache Software License", "GNU General Public License v3", "Not open source"]
 }
