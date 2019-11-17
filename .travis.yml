@@ -15,7 +15,7 @@ test_template: &test_template
   before_install:
     source ./ci/travis/setup_rust.sh
   install:
-    pip install -U pyo3-pack pytest
+    pip install -U maturin pytest
   script:
     ./ci/travis/test.sh
 
