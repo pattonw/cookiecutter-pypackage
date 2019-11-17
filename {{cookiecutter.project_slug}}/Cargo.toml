@@ -6,7 +6,7 @@ description = "{{ cookiecutter.project_short_description }}"
 readme = "README.rst"
 edition = "2018"
 
-# [package.metadata.pyo3-pack.scripts]
+# [package.metadata.maturin.scripts]
 
 {%- set license_classifiers = {
     'MIT License': 'License :: OSI Approved :: MIT License',
@@ -16,7 +16,7 @@ edition = "2018"
     'GNU General Public License v3': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
 } %}
 
-[package.metadata.pyo3-pack]
+[package.metadata.maturin]
 requires-dist = []
 classifier = [
     'Development Status :: 2 - Pre-Alpha',

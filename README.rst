@@ -60,7 +60,7 @@ Then:
 * Add the repo to your Travis-CI_ account.
 * Install the dev requirements into a virtualenv. (``pip install -r requirements_dev.txt``)
 * Register_ your project with PyPI.
-* Add a hidden variable PYO3_PACK_PASSWORD to your repository through the settings in travis_ci to encrypt your PyPI password
+* Add a hidden variable MATURIN_PASSWORD to your repository through the settings in travis_ci to encrypt your PyPI password
   and activate automated deployment on PyPI when you push a new tag to master branch.
 * Add the repo to your ReadTheDocs_ account + turn on the ReadTheDocs service hook.
 * Release your package by pushing a new tag to master.
