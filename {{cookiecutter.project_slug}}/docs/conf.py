@@ -47,9 +47,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'{{ cookiecutter.project_name }}'
-copyright = u"{% now 'local', '%Y' %}, {{ cookiecutter.full_name }}"
-author = u"{{ cookiecutter.full_name }}"
+project = u"""{{ cookiecutter.project_name }}"""
+copyright = u"""{% now 'local', '%Y' %}, {{ cookiecutter.full_name }}"""
+author = u"""{{ cookiecutter.full_name }}"""
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -128,9 +128,9 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, '{{ cookiecutter.project_slug }}.tex',
-     u'{{ cookiecutter.project_name }} Documentation',
-     u'{{ cookiecutter.full_name }}', 'manual'),
+    (master_doc, """{{ cookiecutter.project_slug }}.tex""",
+     u"""{{ cookiecutter.project_name }} Documentation""",
+     u"""{{ cookiecutter.full_name }}""", 'manual'),
 ]
 
 
